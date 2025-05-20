@@ -243,8 +243,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac57d9b2dd4e172f0934c7a1e34485842"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceripple.html#a12af8e98b794e8ee3b4dbecaed2a4efd">LedgerIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Application.html#ac57d9b2dd4e172f0934c7a1e34485842">getMaxDisallowedLedger</a> ()=0</td></tr>
 <tr class="memdesc:ac57d9b2dd4e172f0934c7a1e34485842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that a newly-started validator does not sign proposals older than the last ledger it persisted.  <a href="classripple_1_1Application.html#ac57d9b2dd4e172f0934c7a1e34485842">More...</a><br /></td></tr>
 <tr class="separator:ac57d9b2dd4e172f0934c7a1e34485842"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43e7d6b9a54db220da67532d2708e90c"><td class="memItemLeft" align="right" valign="top">virtual const <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceripple.html#a356c68147333a9a48a344718038576d9">uint256</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Application.html#a43e7d6b9a54db220da67532d2708e90c">trapTxID</a> () const =0</td></tr>
-<tr class="separator:a43e7d6b9a54db220da67532d2708e90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006577b8e45097a163d2a0eac4dbc19e"><td class="memItemLeft" align="right" valign="top">virtual <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceripple.html#a356c68147333a9a48a344718038576d9">uint256</a> &gt; const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Application.html#a006577b8e45097a163d2a0eac4dbc19e">trapTxID</a> () const =0</td></tr>
+<tr class="separator:a006577b8e45097a163d2a0eac4dbc19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5672372869d3a59c7cd2f7ce3056ae33"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a5672372869d3a59c7cd2f7ce3056ae33">name</a> () const</td></tr>
 <tr class="memdesc:a5672372869d3a59c7cd2f7ce3056ae33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of this source.  <a href="classbeast_1_1PropertyStream_1_1Source.html#a5672372869d3a59c7cd2f7ce3056ae33">More...</a><br /></td></tr>
 <tr class="separator:a5672372869d3a59c7cd2f7ce3056ae33"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -267,15 +267,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa2398e48dde9f52949d08ca0785c0bb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#aa2398e48dde9f52949d08ca0785c0bb3">write</a> (PropertyStream &amp;stream)</td></tr>
 <tr class="memdesc:aa2398e48dde9f52949d08ca0785c0bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">write this source and all its children recursively to the stream.  <a href="classbeast_1_1PropertyStream_1_1Source.html#aa2398e48dde9f52949d08ca0785c0bb3">More...</a><br /></td></tr>
 <tr class="separator:aa2398e48dde9f52949d08ca0785c0bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a936592a06d57d60b70874e358758c542"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a936592a06d57d60b70874e358758c542">write</a> (PropertyStream &amp;stream, <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> const &amp;path)</td></tr>
+<tr class="memitem:a936592a06d57d60b70874e358758c542"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a936592a06d57d60b70874e358758c542">write</a> (PropertyStream &amp;stream, <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> const &amp;<a class="el" href="classripple_1_1test_1_1jtx_1_1path.html">path</a>)</td></tr>
 <tr class="memdesc:a936592a06d57d60b70874e358758c542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the path and write the corresponding <a class="el" href="classbeast_1_1PropertyStream_1_1Source.html" title="Subclasses can be called to write to a stream and have children.">Source</a> and optional children.  <a href="classbeast_1_1PropertyStream_1_1Source.html#a936592a06d57d60b70874e358758c542">More...</a><br /></td></tr>
 <tr class="separator:a936592a06d57d60b70874e358758c542"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30f49272d4017476ce3e4694b539b8ae"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; <a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a1dd058a9799aec943c4f52aa263f6242">Source</a> *, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a30f49272d4017476ce3e4694b539b8ae">find</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> path)</td></tr>
+<tr class="memitem:a30f49272d4017476ce3e4694b539b8ae"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; <a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a1dd058a9799aec943c4f52aa263f6242">Source</a> *, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a30f49272d4017476ce3e4694b539b8ae">find</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> <a class="el" href="classripple_1_1test_1_1jtx_1_1path.html">path</a>)</td></tr>
 <tr class="memdesc:a30f49272d4017476ce3e4694b539b8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the dot-delimited <a class="el" href="classbeast_1_1PropertyStream_1_1Source.html" title="Subclasses can be called to write to a stream and have children.">Source</a> path and return the result.  <a href="classbeast_1_1PropertyStream_1_1Source.html#a30f49272d4017476ce3e4694b539b8ae">More...</a><br /></td></tr>
 <tr class="separator:a30f49272d4017476ce3e4694b539b8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a949fcb8686f4cfbb4401bb9a4aad80d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a1dd058a9799aec943c4f52aa263f6242">Source</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a949fcb8686f4cfbb4401bb9a4aad80d7">find_one_deep</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> const &amp;<a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a5672372869d3a59c7cd2f7ce3056ae33">name</a>)</td></tr>
 <tr class="separator:a949fcb8686f4cfbb4401bb9a4aad80d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7982669e8117c921ff644b7e2a552b19"><td class="memItemLeft" align="right" valign="top">PropertyStream::Source *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a7982669e8117c921ff644b7e2a552b19">find_path</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> path)</td></tr>
+<tr class="memitem:a7982669e8117c921ff644b7e2a552b19"><td class="memItemLeft" align="right" valign="top">PropertyStream::Source *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a7982669e8117c921ff644b7e2a552b19">find_path</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> <a class="el" href="classripple_1_1test_1_1jtx_1_1path.html">path</a>)</td></tr>
 <tr class="separator:a7982669e8117c921ff644b7e2a552b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1761f2a6920ca1c5d9543afda4930c45"><td class="memItemLeft" align="right" valign="top">PropertyStream::Source *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a1761f2a6920ca1c5d9543afda4930c45">find_one</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> const &amp;<a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a5672372869d3a59c7cd2f7ce3056ae33">name</a>)</td></tr>
 <tr class="separator:a1761f2a6920ca1c5d9543afda4930c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -285,11 +285,11 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a12999b1c566cf7208abd535c2561e256"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a12999b1c566cf7208abd535c2561e256">peel_leading_slash</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> *path)</td></tr>
+<tr class="memitem:a12999b1c566cf7208abd535c2561e256"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#a12999b1c566cf7208abd535c2561e256">peel_leading_slash</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> *<a class="el" href="classripple_1_1test_1_1jtx_1_1path.html">path</a>)</td></tr>
 <tr class="separator:a12999b1c566cf7208abd535c2561e256"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab971b977e48fc58d6264fa97d94cb6cd"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#ab971b977e48fc58d6264fa97d94cb6cd">peel_trailing_slashstar</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> *path)</td></tr>
+<tr class="memitem:ab971b977e48fc58d6264fa97d94cb6cd"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#ab971b977e48fc58d6264fa97d94cb6cd">peel_trailing_slashstar</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> *<a class="el" href="classripple_1_1test_1_1jtx_1_1path.html">path</a>)</td></tr>
 <tr class="separator:ab971b977e48fc58d6264fa97d94cb6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9cb8e3df035052930a216cd2f052adc"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#aa9cb8e3df035052930a216cd2f052adc">peel_name</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> *path)</td></tr>
+<tr class="memitem:aa9cb8e3df035052930a216cd2f052adc"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbeast_1_1PropertyStream_1_1Source.html#aa9cb8e3df035052930a216cd2f052adc">peel_name</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> *<a class="el" href="classripple_1_1test_1_1jtx_1_1path.html">path</a>)</td></tr>
 <tr class="separator:aa9cb8e3df035052930a216cd2f052adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -1949,8 +1949,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a43e7d6b9a54db220da67532d2708e90c" name="a43e7d6b9a54db220da67532d2708e90c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43e7d6b9a54db220da67532d2708e90c">&#9670;&#160;</a></span>trapTxID()</h2>
+<a id="a006577b8e45097a163d2a0eac4dbc19e" name="a006577b8e45097a163d2a0eac4dbc19e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a006577b8e45097a163d2a0eac4dbc19e">&#9670;&#160;</a></span>trapTxID()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1959,7 +1959,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual const <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceripple.html#a356c68147333a9a48a344718038576d9">uint256</a> &gt; &amp; ripple::Application::trapTxID </td>
+          <td class="memname">virtual <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceripple.html#a356c68147333a9a48a344718038576d9">uint256</a> &gt; const  &amp; ripple::Application::trapTxID </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1972,7 +1972,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classripple_1_1ApplicationImp.html#a47404b738189809542e77436a781b589">ripple::ApplicationImp</a>.</p>
+<p>Implemented in <a class="el" href="classripple_1_1ApplicationImp.html#a4e7d01c782ae8dbc7ef10323d720e6b3">ripple::ApplicationImp</a>.</p>
 
 </div>
 </div>

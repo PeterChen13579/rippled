@@ -124,7 +124,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac4df87634b8bfedbdb69edcd11fee6a1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Peer.html#ac4df87634b8bfedbdb69edcd11fee6a1">removeTxQueue</a> (<a class="el" href="namespaceripple.html#a356c68147333a9a48a344718038576d9">uint256</a> const &amp;)=0</td></tr>
 <tr class="memdesc:ac4df87634b8bfedbdb69edcd11fee6a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove hash from the transactions' hashes queue.  <a href="classripple_1_1Peer.html#ac4df87634b8bfedbdb69edcd11fee6a1">More...</a><br /></td></tr>
 <tr class="separator:ac4df87634b8bfedbdb69edcd11fee6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae84b85a8fcbebaa2a7b3a79fbcdddb73"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Peer.html#ae84b85a8fcbebaa2a7b3a79fbcdddb73">charge</a> (<a class="el" href="classripple_1_1Resource_1_1Charge.html">Resource::Charge</a> const &amp;fee, <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> const &amp;context)=0</td></tr>
+<tr class="memitem:ae84b85a8fcbebaa2a7b3a79fbcdddb73"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Peer.html#ae84b85a8fcbebaa2a7b3a79fbcdddb73">charge</a> (<a class="el" href="classripple_1_1Resource_1_1Charge.html">Resource::Charge</a> const &amp;<a class="el" href="classripple_1_1test_1_1jtx_1_1fee.html">fee</a>, <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> const &amp;context)=0</td></tr>
 <tr class="memdesc:ae84b85a8fcbebaa2a7b3a79fbcdddb73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjust this peer's load balance based on the type of load imposed.  <a href="classripple_1_1Peer.html#ae84b85a8fcbebaa2a7b3a79fbcdddb73">More...</a><br /></td></tr>
 <tr class="separator:ae84b85a8fcbebaa2a7b3a79fbcdddb73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee121254a095838be2d8040bfdfacc79"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classripple_1_1Peer.html#a56cc3cdd9c73921f23cb43a2bfa696a1">id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Peer.html#aee121254a095838be2d8040bfdfacc79">id</a> () const =0</td></tr>
@@ -148,7 +148,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adc1069de1a8a5ff1364003caf00bb139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1af0d4715179fb388b2c8eb049b4ffc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceripple.html#a356c68147333a9a48a344718038576d9">uint256</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Peer.html#ad1af0d4715179fb388b2c8eb049b4ffc">getClosedLedgerHash</a> () const =0</td></tr>
 <tr class="separator:ad1af0d4715179fb388b2c8eb049b4ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a855aa29a52d98979b211ff765dbc542a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Peer.html#a855aa29a52d98979b211ff765dbc542a">hasLedger</a> (<a class="el" href="namespaceripple.html#a356c68147333a9a48a344718038576d9">uint256</a> const &amp;hash, <a class="elRef" href="http://en.cppreference.com/w/cpp/types/integer.html">std::uint32_t</a> seq) const =0</td></tr>
+<tr class="memitem:a855aa29a52d98979b211ff765dbc542a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Peer.html#a855aa29a52d98979b211ff765dbc542a">hasLedger</a> (<a class="el" href="namespaceripple.html#a356c68147333a9a48a344718038576d9">uint256</a> const &amp;hash, <a class="elRef" href="http://en.cppreference.com/w/cpp/types/integer.html">std::uint32_t</a> <a class="el" href="structripple_1_1test_1_1jtx_1_1seq.html">seq</a>) const =0</td></tr>
 <tr class="separator:a855aa29a52d98979b211ff765dbc542a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac03dabc3ec86db62e3d1ea827ab0d0fa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classripple_1_1Peer.html#ac03dabc3ec86db62e3d1ea827ab0d0fa">ledgerRange</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/types/integer.html">std::uint32_t</a> &amp;minSeq, <a class="elRef" href="http://en.cppreference.com/w/cpp/types/integer.html">std::uint32_t</a> &amp;maxSeq) const =0</td></tr>
 <tr class="separator:ac03dabc3ec86db62e3d1ea827ab0d0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -340,7 +340,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Aggregate transaction's hash. </p>
 
-<p>Implemented in <a class="el" href="classripple_1_1test_1_1TestPeer.html#aa7fff7d3f7018080efe29cca5d8eba11">ripple::test::TestPeer</a>, <a class="el" href="classripple_1_1test_1_1PeerPartial.html#a4f8b4bd40da9cfe3d58505e91e993d5f">ripple::test::PeerPartial</a>, <a class="el" href="classripple_1_1test_1_1tx__reduce__relay__test_1_1PeerTest.html#a9f00f294be4b8bcc2e63eafa2d6c0593">ripple::test::tx_reduce_relay_test::PeerTest</a>, and <a class="el" href="classripple_1_1PeerImp.html#ad8d1bd90dc46d3420d19fba02bd51144">ripple::PeerImp</a>.</p>
+<p>Implemented in <a class="el" href="classripple_1_1test_1_1TestPeer.html#a6ce12ac767a2eead01aad09431ebd0d1">ripple::test::TestPeer</a>, <a class="el" href="classripple_1_1test_1_1PeerPartial.html#a4270c371931c11c9b7257c6e5a511ca1">ripple::test::PeerPartial</a>, <a class="el" href="classripple_1_1test_1_1tx__reduce__relay__test_1_1PeerTest.html#abdb16e964b73248c419a95f8e54f19d6">ripple::test::tx_reduce_relay_test::PeerTest</a>, and <a class="el" href="classripple_1_1PeerImp.html#ad8d1bd90dc46d3420d19fba02bd51144">ripple::PeerImp</a>.</p>
 
 </div>
 </div>
@@ -370,7 +370,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Remove hash from the transactions' hashes queue. </p>
 
-<p>Implemented in <a class="el" href="classripple_1_1test_1_1TestPeer.html#a391311e2939da285e6502c94d9f1c01a">ripple::test::TestPeer</a>, <a class="el" href="classripple_1_1test_1_1PeerPartial.html#abbd18f7342c0b7daa8364492fe41c65a">ripple::test::PeerPartial</a>, and <a class="el" href="classripple_1_1PeerImp.html#a0ce6e26cf39a5063c809b175fdaedc1c">ripple::PeerImp</a>.</p>
+<p>Implemented in <a class="el" href="classripple_1_1test_1_1TestPeer.html#a2bdfda592c88f24d3d6c26433d092b0c">ripple::test::TestPeer</a>, <a class="el" href="classripple_1_1test_1_1PeerPartial.html#a092d73f01fe044f9eaf357e3e13e9095">ripple::test::PeerPartial</a>, and <a class="el" href="classripple_1_1PeerImp.html#a0ce6e26cf39a5063c809b175fdaedc1c">ripple::PeerImp</a>.</p>
 
 </div>
 </div>
