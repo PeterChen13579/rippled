@@ -1893,10 +1893,125 @@ class ConfidentialTransfer_test : public beast::unit_test::Suite
     {
         testcase("Merge inbox");
         using namespace test::jtx;
-        Env env{*this, features};
-        Account const alice("alice");
-        Account const bob("bob");
-        ConfidentialEnv const confEnv{env, alice, {{bob, 100, 40}}};
+
+        // Basic merge, then a direct no-op merge with a canonical-zero inbox:
+        // spending amount must be unchanged, inbox must remain canonical zero,
+        // and the holder version must still advance.
+        {
+            Env env{*this, features};
+            Account const alice("alice");
+            Account const bob("bob");
+            ConfidentialEnv confEnv{env, alice, {{bob, 100, 40}}};
+            auto& mptAlice = confEnv.mpt;
+
+            auto const holderPubKey = mptAlice.getPubKey(bob);
+            BEAST_EXPECT(holderPubKey);
+            auto const canonicalZero =
+                encryptCanonicalZeroAmount(*holderPubKey, bob.id(), mptAlice.issuanceID());
+            BEAST_EXPECT(canonicalZero);
+
+            auto const inboxBefore =
+                mptAlice.getEncryptedBalance(bob, MPTTester::HolderEncryptedInbox);
+            auto const spendingBefore =
+                mptAlice.getDecryptedBalance(bob, MPTTester::HolderEncryptedSpending);
+            auto const versionBefore = mptAlice.getMPTokenVersion(bob);
+
+            BEAST_EXPECT(inboxBefore && canonicalZero && *inboxBefore == *canonicalZero);
+            BEAST_EXPECT(spendingBefore);
+
+            mptAlice.mergeInbox({.account = bob});
+
+            auto const inboxAfter =
+                mptAlice.getEncryptedBalance(bob, MPTTester::HolderEncryptedInbox);
+            auto const spendingAfter =
+                mptAlice.getDecryptedBalance(bob, MPTTester::HolderEncryptedSpending);
+
+            BEAST_EXPECT(inboxAfter && canonicalZero && *inboxAfter == *canonicalZero);
+            BEAST_EXPECT(spendingBefore && spendingAfter && *spendingBefore == *spendingAfter);
+            BEAST_EXPECT(mptAlice.getMPTokenVersion(bob) == versionBefore + 1);
+        }
+
+        // Version wraparound is intentional for sfConfidentialBalanceVersion.
+        {
+            Env env{*this, features};
+            Account const alice("alice");
+            Account const bob("bob");
+            ConfidentialEnv confEnv{env, alice, {{bob, 100, 40}}};
+            auto& mptAlice = confEnv.mpt;
+
+            auto const modified =
+                env.app().getOpenLedger().modify([&](OpenView& view, beast::Journal) {
+                    auto const sle = std::const_pointer_cast<SLE>(
+                        view.read(keylet::mptoken(mptAlice.issuanceID(), bob.id())));
+                    if (!sle)
+                        return false;
+
+                    sle->setFieldU32(
+                        sfConfidentialBalanceVersion,
+                        std::numeric_limits<std::uint32_t>::max());
+                    view.rawReplace(sle);
+                    return true;
+                });
+            BEAST_EXPECT(modified);
+
+            mptAlice.mergeInbox({.account = bob});
+
+            BEAST_EXPECT(mptAlice.getMPTokenVersion(bob) == 0);
+        }
+
+        // Auditor-enabled merge must not mutate issuer/auditor mirror
+        // ciphertexts and must not change public or confidential outstanding
+        // amounts.
+        {
+            Env env{*this, features};
+            Account const alice("alice");
+            Account const bob("bob");
+            Account const auditor("auditor");
+            MPTTester mptAlice(env, alice, {.holders = {bob}, .auditor = auditor});
+
+            mptAlice.create({
+                .ownerCount = 1,
+                .flags = tfMPTCanLock | tfMPTCanConfidentialAmount | tfMPTCanTransfer,
+            });
+            mptAlice.authorize({.account = bob});
+            mptAlice.pay(alice, bob, 100);
+
+            mptAlice.generateKeyPair(alice);
+            mptAlice.generateKeyPair(bob);
+            mptAlice.generateKeyPair(auditor);
+            mptAlice.set({
+                .account = alice,
+                .issuerPubKey = mptAlice.getPubKey(alice),
+                .auditorPubKey = mptAlice.getPubKey(auditor),
+            });
+            mptAlice.convert({
+                .account = bob,
+                .amt = 40,
+                .holderPubKey = mptAlice.getPubKey(bob),
+            });
+
+            auto const issuerBefore =
+                mptAlice.getEncryptedBalance(bob, MPTTester::IssuerEncryptedBalance);
+            auto const auditorBefore =
+                mptAlice.getEncryptedBalance(bob, MPTTester::AuditorEncryptedBalance);
+            auto const oaBefore = mptAlice.getBalance(alice);
+            auto const coaBefore = mptAlice.getIssuanceConfidentialBalance();
+
+            BEAST_EXPECT(issuerBefore);
+            BEAST_EXPECT(auditorBefore);
+
+            mptAlice.mergeInbox({.account = bob});
+
+            auto const issuerAfter =
+                mptAlice.getEncryptedBalance(bob, MPTTester::IssuerEncryptedBalance);
+            auto const auditorAfter =
+                mptAlice.getEncryptedBalance(bob, MPTTester::AuditorEncryptedBalance);
+
+            BEAST_EXPECT(issuerBefore && issuerAfter && *issuerBefore == *issuerAfter);
+            BEAST_EXPECT(auditorBefore && auditorAfter && *auditorBefore == *auditorAfter);
+            BEAST_EXPECT(mptAlice.getBalance(alice) == oaBefore);
+            BEAST_EXPECT(mptAlice.getIssuanceConfidentialBalance() == coaBefore);
+        }
     }
 
     void

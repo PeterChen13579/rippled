@@ -2112,6 +2112,11 @@ MPTTester::mergeInbox(MPTMergeInbox const& arg)
     auto const prevInboxBalance = getDecryptedBalance(*arg.account, HolderEncryptedInbox);
     auto const prevSpendingBalance = getDecryptedBalance(*arg.account, HolderEncryptedSpending);
     auto const prevIssuerBalance = getDecryptedBalance(*arg.account, IssuerEncryptedBalance);
+    auto const prevIssuerEncryptedBalance =
+        getEncryptedBalance(*arg.account, IssuerEncryptedBalance);
+    auto const prevAuditorEncryptedBalance =
+        getEncryptedBalance(*arg.account, AuditorEncryptedBalance);
+    auto const prevVersion = getMPTokenVersion(*arg.account);
 
     if (!prevInboxBalance || !prevSpendingBalance || !prevIssuerBalance)
         Throw<std::runtime_error>("Failed to get pre-mergeInbox balances");
@@ -2121,6 +2126,11 @@ MPTTester::mergeInbox(MPTMergeInbox const& arg)
         auto const postInboxBalance = getDecryptedBalance(*arg.account, HolderEncryptedInbox);
         auto const postSpendingBalance = getDecryptedBalance(*arg.account, HolderEncryptedSpending);
         auto const postIssuerBalance = getDecryptedBalance(*arg.account, IssuerEncryptedBalance);
+        auto const postIssuerEncryptedBalance =
+            getEncryptedBalance(*arg.account, IssuerEncryptedBalance);
+        auto const postAuditorEncryptedBalance =
+            getEncryptedBalance(*arg.account, AuditorEncryptedBalance);
+        auto const expectedVersion = static_cast<std::uint32_t>(prevVersion + 1);
 
         if (!postInboxBalance || !postSpendingBalance || !postIssuerBalance)
             Throw<std::runtime_error>("Failed to get post-mergeInbox balances");
@@ -2136,6 +2146,15 @@ MPTTester::mergeInbox(MPTMergeInbox const& arg)
         env_.require(RequireAny([&]() -> bool {
             return *postSpendingBalance + *postInboxBalance == *postIssuerBalance;
         }));
+
+        env_.require(RequireAny([&]() -> bool {
+            return prevIssuerEncryptedBalance == postIssuerEncryptedBalance;
+        }));
+        env_.require(RequireAny([&]() -> bool {
+            return prevAuditorEncryptedBalance == postAuditorEncryptedBalance;
+        }));
+        env_.require(RequireAny(
+            [&]() -> bool { return getMPTokenVersion(*arg.account) == expectedVersion; }));
     }
 }
 
